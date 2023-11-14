@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\gusrb\\source\\repos\\SpartaStudy\\ConsoleApp1\\SpartaDungeon\\SpartaDungeon.csproj",
+      "projectUniqueName": "D:\\GitHub\\SingleProejct\\SpartaDungeon\\SpartaDungeon.csproj",
       "projectName": "SpartaDungeon",
-      "projectPath": "C:\\Users\\gusrb\\source\\repos\\SpartaStudy\\ConsoleApp1\\SpartaDungeon\\SpartaDungeon.csproj",
+      "projectPath": "D:\\GitHub\\SingleProejct\\SpartaDungeon\\SpartaDungeon.csproj",
       "packagesPath": "C:\\Users\\gusrb\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\gusrb\\source\\repos\\SpartaStudy\\ConsoleApp1\\SpartaDungeon\\obj\\",
+      "outputPath": "D:\\GitHub\\SingleProejct\\SpartaDungeon\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
