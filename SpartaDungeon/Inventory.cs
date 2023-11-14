@@ -10,17 +10,23 @@ namespace SpartaDungeon
         public string GearInfo { get; set; }
 
         public string GearIsEquip = "   ";
-        
 
-        public Inventory(int index, string name, string type, int state, string info)
+        enum ItemType
+        {
+            Armor,
+            Weapon
+        }
+
+        public Inventory(int index, string name, enum ItemType, int state, string info)
         {
             GearIndex = index;
             GearName = name;
             GearType = type;
             GearState = state;
             GearInfo = info;
-        }        
-
+        }
+        
+        
         public void GearEquip()
         {
             GearIsEquip = "[E]";

@@ -5,24 +5,21 @@ namespace SpartaDungeon
     internal class Program
     {
         private static Character player;
-        public static List<Inventory> InvenGears = new List<Inventory>();
+        public static List<Item> InvenGears = new List<Item>();
         private static int inputKey;
-        //public static string[] equip = { "   ", "   ", "   " };
         static void Main(string[] args)
         {
-            Inventory gear0 = new Inventory(0, "천 옷", "방어력", 2, "평상시에 입는 옷이다." );
-            Inventory gear1 = new Inventory(1, "녹슨 검", "공격력", 5, "흔하게 볼 수 있는 검이다." );
+            Item gear0 = new Item(1, "천 옷", "방어력", 2, "평상시에 입는 옷이다." );
+            Item gear1 = new Item(2, "녹슨 검", "공격력", 5, "흔하게 볼 수 있는 검이다." );
 
             InvenGears.Add(gear0);
             InvenGears.Add(gear1);
-            
-
 
             player = new Character("규라니", "전사", 1, 10, 5, 100, 1500);
 
             MainTitle();
         }
-
+        
 
         static void MainTitle()
         {
@@ -51,24 +48,27 @@ namespace SpartaDungeon
             }
         }
 
-        static void DisPlayMyState(List<Inventory> gear)
+        static void DisPlayMyState(List<Item> gear)
         {
             Clear();
 
             int atk = 0;
             int armor = 0;
 
+
+            // 공격력, 방어력 타입의 능력치들을 다 합치기
             for(int i = 0; i < gear.Count; i++)
             {
-                if(gear[i].GearType == "공격력" && gear[i].GearIsEquip == "[E]")
+                if(gear[i].GearType == "공격력" && gear[i].GearIsEquip == true)
                 {
                     atk += gear[i].GearState;
                 }
-                else if (gear[i].GearType == "방어력" && gear[i].GearIsEquip == "[E]")
+                else if (gear[i].GearType == "방어력" && gear[i].GearIsEquip == true)
                 {
                     armor += gear[i].GearState; 
                 }
             }
+            // 추후에는 장착할 때 스탯을 더하고 저장하는 방식이면 더 좋을 것 같다.
 
             WriteLine();
             WriteLine("상태보기");
@@ -125,7 +125,7 @@ namespace SpartaDungeon
             }
         }
 
-        static void DisplayEquipControl(List<Inventory> gear)
+        static void DisplayEquipControl(List<Item> gear)
         {
 
             Clear();
@@ -135,6 +135,9 @@ namespace SpartaDungeon
             WriteLine("[아이템 목록]");
             gear[0].DisplayEquip();
             gear[1].DisplayEquip();
+          
+
+
             WriteLine("");
             WriteLine("");
             WriteLine("0. 나가기");
@@ -143,18 +146,12 @@ namespace SpartaDungeon
             switch (inputKey)
             {
                 case 1:
-                    if(InvenGears[inputKey-1].GearIsEquip != "[E]")
-                        InvenGears[inputKey-1].GearEquip();
-                    else
-                        InvenGears[inputKey-1].GearUnEquip();
+                    EquipControl(inputKey);
                     DisplayEquipControl(InvenGears);
                     break;
 
                 case 2:
-                    if (InvenGears[inputKey - 1].GearIsEquip != "[E]")
-                        InvenGears[inputKey - 1].GearEquip();
-                    else
-                        InvenGears[inputKey - 1].GearUnEquip();
+                    EquipControl(inputKey);
                     DisplayEquipControl(InvenGears);
                     break;
 
@@ -163,14 +160,20 @@ namespace SpartaDungeon
                     break;
             }
         }
-
-
+         
+        static void EquipControl(int index)
+        {
+            if (InvenGears[inputKey - 1].GearIsEquip != true)
+                InvenGears[inputKey - 1].GearEquip();
+            else
+                InvenGears[inputKey - 1].GearUnEquip();
+        }
 
         static int CheckInputKey(int min, int max)
         {
             while (true)
             {
-                string ?input = ReadLine();
+                string input = ReadLine();
                 bool parseSuccess = int.TryParse(input, out var ret);
                 if (parseSuccess)
                 {

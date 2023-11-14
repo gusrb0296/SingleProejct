@@ -9,6 +9,8 @@
         public int Def { get; }
         public int Hp { get; }
         public int Gold { get; }
+
+        
         public Character(string name, string job, 
                          int level, int atk, 
                          int def, int hp, int gold) 
